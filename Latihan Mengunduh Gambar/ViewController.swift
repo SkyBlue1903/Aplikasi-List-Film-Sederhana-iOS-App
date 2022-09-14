@@ -7,6 +7,8 @@
 
 import UIKit
 
+// ----------|  File Ketiga: Edit semua di controller utama |----------
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!

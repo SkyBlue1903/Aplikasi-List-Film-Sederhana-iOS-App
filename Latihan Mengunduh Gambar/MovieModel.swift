@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 //----------| File Kedua |----------
 
 class Movie {
     let title: String
     let poster: URL
+    
+    var image: UIImage?
+    var state: DownloadState = .new
     
     init(judul: String, gambar: URL) {
         self.title = judul
@@ -52,3 +56,7 @@ let movies = [
         gambar: URL(string: "https://image.tmdb.org/t/p/w500/kPzQtr5LTheO0mBodIeAXHgthYX.jpg")!
       )
 ]
+
+enum DownloadState {
+    case new, downloaded, failed
+}
