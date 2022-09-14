@@ -14,6 +14,8 @@
 		57275DC428D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57275DC228D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld */; };
 		57275DC628D17D5800E8E18D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57275DC528D17D5800E8E18D /* Assets.xcassets */; };
 		57275DC928D17D5800E8E18D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57275DC728D17D5800E8E18D /* LaunchScreen.storyboard */; };
+		57275DD428D1809300E8E18D /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57275DD228D1809300E8E18D /* MovieTableViewCell.swift */; };
+		57275DD528D1809300E8E18D /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57275DD328D1809300E8E18D /* MovieTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		57275DC528D17D5800E8E18D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57275DC828D17D5800E8E18D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57275DCA28D17D5800E8E18D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57275DD228D1809300E8E18D /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		57275DD328D1809300E8E18D /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				57275DC728D17D5800E8E18D /* LaunchScreen.storyboard */,
 				57275DCA28D17D5800E8E18D /* Info.plist */,
 				57275DC228D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld */,
+				57275DD228D1809300E8E18D /* MovieTableViewCell.swift */,
+				57275DD328D1809300E8E18D /* MovieTableViewCell.xib */,
 			);
 			path = "Latihan Mengunduh Gambar";
 			sourceTree = "<group>";
@@ -130,6 +136,7 @@
 			files = (
 				57275DC928D17D5800E8E18D /* LaunchScreen.storyboard in Resources */,
 				57275DC628D17D5800E8E18D /* Assets.xcassets in Resources */,
+				57275DD528D1809300E8E18D /* MovieTableViewCell.xib in Resources */,
 				57275DC128D17D5600E8E18D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57275DD428D1809300E8E18D /* MovieTableViewCell.swift in Sources */,
 				57275DBE28D17D5600E8E18D /* ViewController.swift in Sources */,
 				57275DC428D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld in Sources */,
 				57275DBA28D17D5600E8E18D /* AppDelegate.swift in Sources */,
