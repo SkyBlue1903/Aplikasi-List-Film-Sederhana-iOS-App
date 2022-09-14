@@ -16,6 +16,7 @@
 		57275DC928D17D5800E8E18D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57275DC728D17D5800E8E18D /* LaunchScreen.storyboard */; };
 		57275DD428D1809300E8E18D /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57275DD228D1809300E8E18D /* MovieTableViewCell.swift */; };
 		57275DD528D1809300E8E18D /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57275DD328D1809300E8E18D /* MovieTableViewCell.xib */; };
+		57275DD728D18BCF00E8E18D /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57275DD628D18BCF00E8E18D /* MovieModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		57275DCA28D17D5800E8E18D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57275DD228D1809300E8E18D /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		57275DD328D1809300E8E18D /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		57275DD628D18BCF00E8E18D /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				57275DC228D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld */,
 				57275DD228D1809300E8E18D /* MovieTableViewCell.swift */,
 				57275DD328D1809300E8E18D /* MovieTableViewCell.xib */,
+				57275DD628D18BCF00E8E18D /* MovieModel.swift */,
 			);
 			path = "Latihan Mengunduh Gambar";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57275DD728D18BCF00E8E18D /* MovieModel.swift in Sources */,
 				57275DD428D1809300E8E18D /* MovieTableViewCell.swift in Sources */,
 				57275DBE28D17D5600E8E18D /* ViewController.swift in Sources */,
 				57275DC428D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld in Sources */,
