@@ -7,6 +7,8 @@
 
 import Foundation
 
+//----------| File Kedua |----------
+
 class Movie {
     let title: String
     let poster: URL

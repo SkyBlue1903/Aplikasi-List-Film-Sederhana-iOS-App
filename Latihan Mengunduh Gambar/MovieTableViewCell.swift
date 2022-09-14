@@ -9,7 +9,7 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
-// ----------| File Pertama |----------
+// ----------| File Pertama + XIB |----------
     
     @IBOutlet weak var indicatorLoading: UIActivityIndicatorView!
     @IBOutlet weak var movieImage: UIImageView!
