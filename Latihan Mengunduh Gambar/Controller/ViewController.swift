@@ -65,29 +65,22 @@ extension ViewController: UITableViewDataSource {
     
     // Ketika kondisi terpenuhi, kode melakukan pemanggilan function startDownload
     fileprivate func startDownload(movie: Movie, indexPath: IndexPath) {
-        // Memastikan bahwa indeks TableView dalam pendingOperation memiliki keadaan nil. Ketika proses dalam indeks ternyata masih berlangsung, kode tidak akan dieksekusi
-        guard pendingOperations.downloadInProgress[indexPath] == nil else {
-            return
-        }
-        
-        // Setelah memastikan indeks dalam keadaan nil, kode memanggil instance operation bernama downloader
-        let downloader = ImageDownloader(movie: movie)
-        downloader.completionBlock = {
-            if downloader.isCancelled { return }
-            
-            DispatchQueue.main.async {
-                self.pendingOperations.downloadInProgress.removeValue(forKey: indexPath)
-                
-                // Item TableView dimuat ulang sesaat setelah proses unduh berhasil dilakukan
-                self.movieTableView.reloadRows(at: [indexPath], with: .automatic)
+        let imageDownloader = ImageDownloader()
+        if movie.state == .new {
+            // Task digunakan untuk menjalankan proses asynchronous dalam function synchronous. Ketika ingin menjalankan proses asynchronous secara paksa, terjadilah error
+            Task {
+                // Gunakan try-catch ketika memanggil imageDownloader karena memicu kesalahan. Ketika proses mengunduh gagal, kode masuk di bagian blok catch
+                do {
+                    let image = try await imageDownloader.downloadImage(url: movie.poster)
+                    movie.state = .downloaded
+                    movie.image = image
+                    self.movieTableView.reloadRows(at: [indexPath], with: .automatic)
+                } catch {
+                    movie.state = .failed
+                    movie.image = nil
+                }
             }
         }
-        
-        // Completion Block bisa disebut juga dengan callback untuk menghubungkan satu thread ke thread lainnya (thread dependency). Completion Block sendiri sebenarnya adalah sebuah Closure, yang artinya Anda harus mengirimkan sebuah function sebagai parameter. Dalam kasus ini, yakni saat operation selesai, kode menghapus operation sesuai dengan indeksnya dan memperbarui row/baris pada indeks tersebut
-        
-//        Dengan begitu, operation downloader bisa dimasukkan dalam antrean
-        pendingOperations.downloadInProgress[indexPath] = downloader
-        pendingOperations.downloadQueue.addOperation(downloader)
     }
 
 }

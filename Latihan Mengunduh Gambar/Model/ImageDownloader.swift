@@ -7,40 +7,19 @@
 
 import UIKit
 
-// ----------|  File Keempat: Untuk mengunduh gambar secara online |----------
+// ----------|  File yang diedit: Mengubah kode GCD |----------
 // MARK: mengunduh gambar dari alamat URL dan memperbarui setelah data berhasil diunduh
-class ImageDownloader: Operation {
-    private let movie: Movie
-    
-    init(movie: Movie) {
-        self.movie = movie
-    }
-    
-    override func main() {
-        if isCancelled {
-            return
-        }
+class ImageDownloader {
+    // Ketika ingin mengubah sebuah function biasa menjadi asynchronous function dibutuhkan kata kunci async. Selain itu bisa menambahkan kata kunci throws jika kode memicu error
+    func downloadImage(url: URL) async throws -> UIImage {
         
-        // Untuk mengunduh gambar
-        guard let imageData = try? Data(contentsOf: self.movie.poster) else {
-            return
-        }
-        
-        if isCancelled {
-            return
-        }
-        
-        // Ketika aplikasi berhasil mengunduh, ImageDownloader menetapkan nilai image dan mengubah nilai state menjadi .downloaded. Ketika aplikasi tidak dapat memuat gambar, nilai image menjadi nil dan nilai state akan berubah menjadi .failed
-        if !imageData.isEmpty {
-            // Ubah data menjadi gambar dengan bantuan UIImage dan menetapkannya dalam properti movie
-            self.movie.image = UIImage(data: imageData)
-            self.movie.state = .downloaded
-        } else {
-            self.movie.image = nil
-            self.movie.state = .failed
-        }
+        // Gunakan Async-let untuk menandai sebuah variabel yang awalnya berjalan secara synchronous menjadi asynchronous. Mengapa perlu melakukan ini? Sebenarnya boleh-boleh saja jika ingin melakukan proses mengunduh gambar atau proses yang berat di main thread. Namun, hal tersebut dapat menyebabkan masalah jika proses yang dilakukan biasanya membutuhkan waktu lebih lama. Contohnya adalah tampilan pengguna menjadi lag, stuck, bahkan bisa saja menyebabkan error. Oleh karena itu, kita dapat membuat agar variabel tersebut berjalan secara asynchronous
+        async let imageData: Data = try Data(contentsOf: url)
+        // Oleh karena proses sebelumnya memicu kesalahan, perlu kata kunci try. Kemudian await digunakan untuk menunggu proses imageData mendapatkan data yang dibutuhkan.
+        return UIImage(data: try await imageData)!
     }
 }
+
 
 // MARK: Menangani request dan mengantrekan proses pengunduhan gambar
 class PendingOperations {
