@@ -5,10 +5,9 @@
 //  Created by Erlangga Anugrah Arifin on 14/09/22.
 //
 
-import Foundation
 import UIKit
 
-// ----------|  File Keempat |----------
+// ----------|  File Keempat: Untuk mengunduh gambar secara online |----------
 class ImageDownloader: Operation {
     private let movie: Movie
     
@@ -17,11 +16,15 @@ class ImageDownloader: Operation {
     }
     
     override func main() {
-//        if isCancelled {
-//            return
-//        }
+        if isCancelled {
+            return
+        }
         
         guard let imageData = try? Data(contentsOf: self.movie.poster) else {
+            return
+        }
+        
+        if isCancelled {
             return
         }
         
@@ -34,3 +37,17 @@ class ImageDownloader: Operation {
         }
     }
 }
+
+// MARK: Menangani request
+class PendingOperations {
+    lazy var downloadInProgress: [IndexPath: Operation] = [:]
+
+    // maksimum 2 antrean sekaligus
+    var downloadQueue: OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "com.anugrahangga.Latihan-Mengunduh-Gambar"
+        queue.maxConcurrentOperationCount = 2
+        return queue
+    }()
+}
+
