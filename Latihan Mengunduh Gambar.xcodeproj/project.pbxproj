@@ -18,7 +18,6 @@
 		57275DD528D1809300E8E18D /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57275DD328D1809300E8E18D /* MovieTableViewCell.xib */; };
 		57275DD728D18BCF00E8E18D /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57275DD628D18BCF00E8E18D /* MovieModel.swift */; };
 		5737FA7328D21AD500313B9C /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737FA7228D21AD500313B9C /* ImageDownloader.swift */; };
-		5737FA7528D21CC400313B9C /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737FA7428D21CC400313B9C /* PendingOperations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		57275DD328D1809300E8E18D /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
 		57275DD628D18BCF00E8E18D /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		5737FA7228D21AD500313B9C /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		5737FA7428D21CC400313B9C /* PendingOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,19 +68,42 @@
 			children = (
 				57275DB928D17D5600E8E18D /* AppDelegate.swift */,
 				57275DBB28D17D5600E8E18D /* SceneDelegate.swift */,
-				57275DBD28D17D5600E8E18D /* ViewController.swift */,
-				57275DBF28D17D5600E8E18D /* Main.storyboard */,
+				5799F95C28D2C8FA000ECA9E /* Model */,
+				5799F95E28D2C924000ECA9E /* View */,
+				5799F95D28D2C915000ECA9E /* Controller */,
 				57275DC528D17D5800E8E18D /* Assets.xcassets */,
-				57275DC728D17D5800E8E18D /* LaunchScreen.storyboard */,
 				57275DCA28D17D5800E8E18D /* Info.plist */,
-				57275DC228D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld */,
-				57275DD228D1809300E8E18D /* MovieTableViewCell.swift */,
-				57275DD328D1809300E8E18D /* MovieTableViewCell.xib */,
-				57275DD628D18BCF00E8E18D /* MovieModel.swift */,
-				5737FA7228D21AD500313B9C /* ImageDownloader.swift */,
-				5737FA7428D21CC400313B9C /* PendingOperations.swift */,
 			);
 			path = "Latihan Mengunduh Gambar";
+			sourceTree = "<group>";
+		};
+		5799F95C28D2C8FA000ECA9E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57275DC228D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld */,
+				57275DD628D18BCF00E8E18D /* MovieModel.swift */,
+				5737FA7228D21AD500313B9C /* ImageDownloader.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5799F95D28D2C915000ECA9E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				57275DBD28D17D5600E8E18D /* ViewController.swift */,
+				57275DD228D1809300E8E18D /* MovieTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5799F95E28D2C924000ECA9E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57275DBF28D17D5600E8E18D /* Main.storyboard */,
+				57275DC728D17D5800E8E18D /* LaunchScreen.storyboard */,
+				57275DD328D1809300E8E18D /* MovieTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,7 +181,6 @@
 				57275DD728D18BCF00E8E18D /* MovieModel.swift in Sources */,
 				57275DD428D1809300E8E18D /* MovieTableViewCell.swift in Sources */,
 				5737FA7328D21AD500313B9C /* ImageDownloader.swift in Sources */,
-				5737FA7528D21CC400313B9C /* PendingOperations.swift in Sources */,
 				57275DBE28D17D5600E8E18D /* ViewController.swift in Sources */,
 				57275DC428D17D5600E8E18D /* Latihan_Mengunduh_Gambar.xcdatamodeld in Sources */,
 				57275DBA28D17D5600E8E18D /* AppDelegate.swift in Sources */,

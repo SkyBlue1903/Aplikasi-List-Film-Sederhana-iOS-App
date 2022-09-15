@@ -10,6 +10,7 @@ import UIKit
 
 //----------| File Kedua |----------
 
+// MARK: sebagai data model untuk menampung informasi movie
 class Movie {
     let title: String
     let poster: URL
@@ -21,6 +22,7 @@ class Movie {
         self.title = judul
         self.poster = gambar
     }
+// Konstanta title dan poster akan ditetapkan saat model Movie diinisialisasi, sedangkan variabel image secara default berupa variabel opsional dan untuk state memiliki nilai default berupa .new
 }
 
 let movies = [
@@ -57,6 +59,12 @@ let movies = [
       )
 ]
 
+// MARK: Beberapa state untuk proses unduh gambar dalam aplikasi
 enum DownloadState {
     case new, downloaded, failed
+//new: merupakan state default dari movie model;
+//downloaded: merupakan state ketika proses mengunduh sedang dilakukan; dan
+//failed: merupakan state yang menunjukkan bahwa proses mengunduh gagal dilakukan.
 }
+
+
