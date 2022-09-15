@@ -1,5 +1,5 @@
 # Latihan Mengunduh Gambar
-**Developer Name:** Erlangga Anugrah Arifin
+**Developer Name:** Erlangga Anugrah Arifin | 
 **Project Date:** September 2022
 
 ## Objective
