@@ -12,6 +12,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var movieTableView: UITableView!
+    private var movies: [Movie] = []
     
     // digunakan sebagai wadah dari antrean operation
     private let pendingOperations = PendingOperations()
@@ -22,6 +23,21 @@ class ViewController: UIViewController {
         movieTableView.dataSource = self
         movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "movieTableViewCell") // MARK: movieTableViewCell adalah identifier dari file XIB MovieTableViewCell
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task { await getMovies() }
+      }
+     
+      func getMovies() async {
+        let network = NetworkService()
+        do {
+          movies = try await network.getMovies()
+          movieTableView.reloadData()
+        } catch {
+          fatalError("Error: connection failed.")
+        }
+      }
 
 }
 
@@ -71,7 +87,7 @@ extension ViewController: UITableViewDataSource {
             Task {
                 // Gunakan try-catch ketika memanggil imageDownloader karena memicu kesalahan. Ketika proses mengunduh gagal, kode masuk di bagian blok catch
                 do {
-                    let image = try await imageDownloader.downloadImage(url: movie.poster)
+                    let image = try await imageDownloader.downloadImage(url: movie.posterPath)
                     movie.state = .downloaded
                     movie.image = image
                     self.movieTableView.reloadRows(at: [indexPath], with: .automatic)

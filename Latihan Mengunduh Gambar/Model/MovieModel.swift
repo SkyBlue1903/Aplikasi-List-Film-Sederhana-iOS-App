@@ -11,53 +11,38 @@ import UIKit
 //----------| File Kedua |----------
 
 // MARK: sebagai data model untuk menampung informasi movie
-class Movie {
-    let title: String
-    let poster: URL
-    
-    var image: UIImage?
-    var state: DownloadState = .new
-    
-    init(judul: String, gambar: URL) {
-        self.title = judul
-        self.poster = gambar
-    }
 // Konstanta title dan poster akan ditetapkan saat model Movie diinisialisasi, sedangkan variabel image secara default berupa variabel opsional dan untuk state memiliki nilai default berupa .new
+class Movie {
+  let title: String
+  let popularity: Double
+  let genres: [Int]
+  let voteAverage: Double
+  let overview: String
+  let releaseDate: Date
+  let posterPath: URL
+ 
+  var image: UIImage?
+  var state: DownloadState = .new
+ 
+  init(
+    title: String,
+    popularity: Double,
+    genres: [Int],
+    voteAverage: Double,
+    overview: String,
+    releaseDate: Date,
+    posterPath: URL
+  ) {
+    self.title = title
+    self.popularity = popularity
+    self.genres = genres
+    self.voteAverage = voteAverage
+    self.overview = overview
+    self.releaseDate = releaseDate
+    self.posterPath = posterPath
+  }
 }
 
-let movies = [
-    Movie(
-        judul: "Thor: Love and Thunder",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg")!
-      ), Movie(
-        judul: "Minions: The Rise of Gru",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/wKiOkZTN9lUUUNZLmtnwubZYONg.jpg")!
-      ), Movie(
-        judul: "Jurassic World Dominion",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/kAVRgw7GgK1CfYEJq8ME6EvRIgU.jpg")!
-      ), Movie(
-        judul: "Top Gun: Maverick",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg")!
-      ), Movie(
-        judul: "The Gray Man",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/8cXbitsS6dWQ5gfMTZdorpAAzEH.jpg")!
-      ), Movie(
-        judul: "The Black Phone",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/p9ZUzCyy9wRTDuuQexkQ78R2BgF.jpg")!
-      ), Movie(
-        judul: "Lightyear",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/ox4goZd956BxqJH6iLwhWPL9ct4.jpg")!
-      ), Movie(
-        judul: "Doctor Strange in the Multiverse of Madness",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg")!
-      ), Movie(
-        judul: "Indemnity",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/tVbO8EAbegVtVkrl8wNhzoxS84N.jpg")!
-      ), Movie(
-        judul: "Borrego",
-        gambar: URL(string: "https://image.tmdb.org/t/p/w500/kPzQtr5LTheO0mBodIeAXHgthYX.jpg")!
-      )
-]
 
 // MARK: Beberapa state untuk proses unduh gambar dalam aplikasi
 enum DownloadState {
@@ -68,3 +53,59 @@ enum DownloadState {
 }
 
 
+// MARK: menampung data sementara dari API
+struct MovieResponses: Codable {
+  let page: Int
+  let totalResults: Int
+  let totalPages: Int
+  let movies: [MovieResponse]
+ 
+  enum CodingKeys: String, CodingKey {
+    case page
+    case totalResults = "total_results"
+    case totalPages = "total_pages"
+    case movies = "results"
+  }
+}
+ 
+struct MovieResponse: Codable {
+  let popularity: Double
+  let title: String
+  let genres: [Int]
+  let voteAverage: Double
+  let overview: String
+  let releaseDate: Date
+ 
+  let posterPath: URL
+ 
+  enum CodingKeys: String, CodingKey {
+    case popularity
+    case posterPath = "poster_path"
+    case title
+    case genres = "genre_ids"
+    case voteAverage = "vote_average"
+    case overview
+    case releaseDate = "release_date"
+  }
+ 
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+ 
+    // Menentukan alamat gambar, dan menyesuaikan posterPath menjadi URL agar lebih mudah untuk digunakan
+    let path = try container.decode(String.self, forKey: .posterPath)
+    posterPath = URL(string: "https://image.tmdb.org/t/p/w300\(path)")!
+ 
+    // Menentukan tanggal rilis
+    let dateString = try container.decode(String.self, forKey: .releaseDate)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    releaseDate = dateFormatter.date(from: dateString)!
+ 
+    // Untuk properti lainnya, cukup disesuaikan saja.
+    popularity = try container.decode(Double.self, forKey: .popularity)
+    title = try container.decode(String.self, forKey: .title)
+    genres = try container.decode([Int].self, forKey: .genres)
+    voteAverage = try container.decode(Double.self, forKey: .voteAverage)
+    overview = try container.decode(String.self, forKey: .overview)
+  }
+}
