@@ -66,15 +66,31 @@
 		57275DB828D17D5600E8E18D /* Latihan Mengunduh Gambar */ = {
 			isa = PBXGroup;
 			children = (
-				57275DB928D17D5600E8E18D /* AppDelegate.swift */,
-				57275DBB28D17D5600E8E18D /* SceneDelegate.swift */,
+				573DA0D528D6177E005F8594 /* App */,
 				5799F95C28D2C8FA000ECA9E /* Model */,
 				5799F95E28D2C924000ECA9E /* View */,
 				5799F95D28D2C915000ECA9E /* Controller */,
+				573DA0D628D6178F005F8594 /* Filesystem */,
+			);
+			path = "Latihan Mengunduh Gambar";
+			sourceTree = "<group>";
+		};
+		573DA0D528D6177E005F8594 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				57275DB928D17D5600E8E18D /* AppDelegate.swift */,
+				57275DBB28D17D5600E8E18D /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		573DA0D628D6178F005F8594 /* Filesystem */ = {
+			isa = PBXGroup;
+			children = (
 				57275DC528D17D5800E8E18D /* Assets.xcassets */,
 				57275DCA28D17D5800E8E18D /* Info.plist */,
 			);
-			path = "Latihan Mengunduh Gambar";
+			path = Filesystem;
 			sourceTree = "<group>";
 		};
 		5799F95C28D2C8FA000ECA9E /* Model */ = {
@@ -333,7 +349,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2W8TC22856;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Latihan Mengunduh Gambar/Info.plist";
+				INFOPLIST_FILE = "Latihan Mengunduh Gambar/Filesystem/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -361,7 +377,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2W8TC22856;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Latihan Mengunduh Gambar/Info.plist";
+				INFOPLIST_FILE = "Latihan Mengunduh Gambar/Filesystem/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
