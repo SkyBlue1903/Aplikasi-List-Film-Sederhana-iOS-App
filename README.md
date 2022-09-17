@@ -12,8 +12,13 @@ Make simple movie app list with Table View and downloadable image from Internet.
 * Thread
 * GDC (Grand Central Dispatch)
 * Concurrent Queue
-* Async
+* Async, Await, Throws
 * Dispatch Queue
 * Completion Block/Callback
 * Delegation
 * Condition by Enumeration
+* JSON Decoder
+* HTTP Request
+* API from TMDB
+* Completion Handler
+* URLSession
